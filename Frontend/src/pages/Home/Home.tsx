@@ -1,7 +1,7 @@
 import {Button, Container, TextField} from "@mui/material";
 import React from "react";
 import { useState } from "react";
-// import { YGOCard } from "../../components/Card";
+import { YGOCard, YGOCardProps } from "../../components/Card";
 import { YGOGrid } from "../../components/CardGrid";
 
 //Theming
@@ -17,9 +17,24 @@ export const Home = () => {
     //For more information on hooks generall, check out:
     //https://reactjs.org/docs/hooks-intro.html
     const [cardData, setCardData] = useState("");
+    const [gridData, setGridData] = useState(null);
     const fetchUrl = 'http://localhost:'
     const fetchPort = '5000'
     const fetchEndpoint = '/test'
+    const cardArr: YGOCardProps[] = [
+        {
+            image: "./cardData/Images/95440946.jpg",
+            name: "Eldlich the Golden Lord"
+        },
+        {
+            image: "./cardData/Images/27204311.jpg",
+            name: "Nibiru the Primal Being"
+        }
+    ];
+
+    function handleButton(){
+        setGridData(<YGOGrid cards={cardArr} />); 
+    };
 
     const darkTheme = createTheme({
         palette: {
@@ -43,23 +58,7 @@ export const Home = () => {
         );
     }
 
-    function handlePost(){
-        console.log("POST pressed!\nPOST data currently is:");
-        console.log(cardData);
 
-        //Actually do a post;
-        const response = fetch((fetchUrl + fetchPort + fetchEndpoint), {
-            method: 'POST',
-            headers: {
-                accept: 'application.json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(makeBody()),
-            cache: 'default'
-        });
-
-        console.log(response);
-    };
 
     return(
         <>
@@ -81,15 +80,14 @@ export const Home = () => {
 
                         <Button 
                             variant="contained" 
-                            onClick={handlePost}
+                            onClick={handleButton}
                             color = "error"
                             size = "large"
                         >
                             SEND
                         </Button>
                     </Container>
-
-                    <YGOGrid />
+                    {gridData}
                 </Container>
             </ThemeProvider>
         </>

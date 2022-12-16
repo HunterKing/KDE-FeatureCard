@@ -1,8 +1,16 @@
 import { Card, CardMedia } from "@mui/material";
 import React from "react";
 
-export const YGOCard = () =>{
+/**
+ * Interface for a YGOCard,
+ * We might take more options in the future (Card Text, )
+ */
+export interface YGOCardProps {
+    image: string,
+    name: string
+}
 
+export const YGOCard: React.FC<YGOCardProps> = ({image, name}) =>{
     function handleHover(e: any){
         console.log("Hello!");
     }
@@ -21,8 +29,8 @@ export const YGOCard = () =>{
             <CardMedia
                 style={{minWidth: 0, maxWidth: 200}} 
                 component="img" 
-                src='./cardData/Images/95440946.jpg' 
-                alt="Eldlich the Golden Lord"
+                src={image}
+                alt={name}
             />
         </Card>
     )
