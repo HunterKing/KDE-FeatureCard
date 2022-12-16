@@ -1,7 +1,8 @@
-import {Button, Form, FormControl, FormGroup} from "react-bootstrap";
+import {Button, TextField} from "@mui/material";
 import React from "react";
 import { useState } from "react";
-import { YGOCard } from "../../components/Card";
+// import { YGOCard } from "../../components/Card";
+import { YGOGrid } from "../../components/CardGrid";
 
 export const Home = () => {
     //This uses useState() which is a React hook.
@@ -66,27 +67,20 @@ export const Home = () => {
                 This is the POST/GET page!
             </h3>
 
-            { /* For more info on forms, check out: */ }
-            { /* https://react-bootstrap.github.io/forms/overview/ */ }
-            <Form>
-                <FormGroup controlId="formControlsTextarea">
-                    <FormControl 
-                        type="text"
-                        placeholder="Card Name..." 
-                        onChange={handlePostData} 
-                    />
-                </FormGroup>
+            <TextField
+                defaultValue="Card Name"
+                onChange={handlePostData}
+            />
 
-                <Button onClick={handlePost}>
-                    POST
-                </Button> 
+            <Button variant="contained" onClick={handlePost}>
+                POST
+            </Button> 
 
-                <Button onClick={handleGet}>
-                    GET
-                </Button>
+            <Button variant="contained" onClick={handleGet}>
+                GET
+            </Button>
 
-                <YGOCard />
-            </Form>
+            <YGOGrid />
         </>
     );
 };
