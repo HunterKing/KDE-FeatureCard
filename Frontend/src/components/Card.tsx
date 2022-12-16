@@ -18,7 +18,8 @@ export const YGOCard = () =>{
             onMouseEnter={handleHover} 
             onMouseLeave={handleHover}
         >
-            <CardMedia 
+            <CardMedia
+                style={{minWidth: 0, maxWidth: 200}} 
                 component="img" 
                 src='./cardData/Images/95440946.jpg' 
                 alt="Eldlich the Golden Lord"
