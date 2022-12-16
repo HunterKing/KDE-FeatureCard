@@ -11,13 +11,13 @@ export interface YGOCardProps {
 }
 
 export const YGOCard: React.FC<YGOCardProps> = ({image, name}) =>{
-    function handleHover(e: any){
+    const handleHover: React.MouseEventHandler<HTMLDivElement> = (hoverEvent) =>{
         console.log("Hello!");
     }
 
-    function handleClick(e: any){
+    const handleClick: React.MouseEventHandler<HTMLDivElement> = (clickEvent) =>{
         console.log("Hello!");
-        console.log(e);
+        console.log(clickEvent);
     }
 
     return(
