@@ -1,5 +1,5 @@
-import { Card, CardMedia } from "@mui/material";
-import React from "react";
+import { Card, CardMedia, makeStyles } from "@mui/material";
+import React, { useState } from "react";
 
 /**
  * Interface for a YGOCard,
@@ -11,6 +11,18 @@ export interface YGOCardProps {
 }
 
 export const YGOCard: React.FC<YGOCardProps> = ({image, name}) =>{
+    const [scale, setScale] = useState(0);
+    const useStyles = makeStyles((theme: any) => ({
+        YGOCardStyle: {
+            minWidth: 0, 
+            maxWidth: 200,
+            '&:hover':{
+                transform: `scale(${scale})`,
+                transition: "transform 0.2s"
+            }
+        },
+    }));
+    
     const handleHover: React.MouseEventHandler<HTMLDivElement> = (hoverEvent) =>{
         console.log("Hello!");
     }
@@ -27,7 +39,6 @@ export const YGOCard: React.FC<YGOCardProps> = ({image, name}) =>{
             onMouseLeave={handleHover}
         >
             <CardMedia
-                style={{minWidth: 0, maxWidth: 200}} 
                 component="img" 
                 src={image}
                 alt={name}

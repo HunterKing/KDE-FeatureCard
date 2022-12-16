@@ -1,4 +1,4 @@
-import { Container, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import { YGOCard, YGOCardProps } from './Card';
 import React from 'react';
 
