@@ -1,6 +1,7 @@
 import { Grid } from '@mui/material';
 import { YGOCard, YGOCardProps } from './Card';
 import React from 'react';
+import { CenterContentBox } from '../layout/centerContentBox';
 
 interface YGOGridProps{
     cards: YGOCardProps[]

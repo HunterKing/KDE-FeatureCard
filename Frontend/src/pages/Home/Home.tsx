@@ -23,13 +23,13 @@ export const Home = () => {
         setCardArr(
             [
                 {
-                    image: "./cardData/Images/95440946.jpeg",
+                    image: "./cardData/Images/95440946.jpg",
                     name: "Eldlich the Golden Lord"
-                },
-                {
-                    image: "./cardData/Images/27204311.jpeg",
-                    name: "Nibiru the Primal Being"
                 }
+                // {
+                //     image: "./cardData/Images/27204311.jpg",
+                //     name: "Nibiru the Primal Being"
+                // }
             ]
         );
     };
