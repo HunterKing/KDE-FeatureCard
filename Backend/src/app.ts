@@ -4,6 +4,11 @@ import dotenv from 'dotenv';
 import express from 'express';
 import path from 'path';
 import { routes } from './routes'
+import { SetupServer } from './utils/setupFetch';
+
+
+// Setup the server.
+SetupServer();
 
 // make and configure the application.
 const app = express();

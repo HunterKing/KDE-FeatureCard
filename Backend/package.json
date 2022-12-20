@@ -14,6 +14,6 @@
     "typescript": "^4.9.4"
   },
   "scripts": {
-    "start": "nodemon src/app.ts"
+    "start": "nodemon --ignore cardData/ src/app.ts"
   }
 }
