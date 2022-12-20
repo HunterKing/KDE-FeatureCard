@@ -2,6 +2,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
+import path from 'path';
 import { routes } from './routes'
 
 // make and configure the application.
@@ -16,6 +17,7 @@ const port = process.env.APP_PORT;
 
 //Routes
 app.use('/', routes);
+app.use(express.static(path.resolve(__dirname, "../../Frontend/build/")))
 
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

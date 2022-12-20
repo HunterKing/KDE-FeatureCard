@@ -1,5 +1,6 @@
-import { Card, CardMedia } from "@mui/material";
+import { Card, CardActionArea, CardMedia, Select } from "@mui/material";
 import React, { useMemo, useState } from "react";
+import { CenterContentBox } from "../layout/CenterContentBox";
 
 /**
  * Interface for a YGOCard,
@@ -11,39 +12,43 @@ export interface YGOCardProps {
 }
 
 export const YGOCard: React.FC<YGOCardProps> = ({ image, name }) => {
-  const [scale, setScale] = useState(.95);
+  const [cardScale, setScale] = useState(1);
 
+  //TODO: Would like to have the cute hover-over zoom-in; This seems advanced.
   const handleHover = (isHovered: boolean) => {
     if (isHovered) {
-      console.log("true");
-      setScale(1);
+      setScale(1.2);
     } else {
-      console.log("nay");
-      setScale(.95);
+      setScale(1);
     }
   };
 
   const handleClick: React.MouseEventHandler<HTMLDivElement> = (clickEvent) => {
     console.log("Hello!");
     console.log(clickEvent);
+
   };
 
   const cardMedia = useMemo(
-    () => <CardMedia component="img" src={image} alt={name} />,
+    () => <CardMedia
+     component="img" 
+     src={image} 
+     alt={name} 
+    />,
     [image, name]
   );
 
   return (
-    <Box>
+    <CenterContentBox>
         <Card
-        onClick={handleClick}
-        onMouseEnter={() => handleHover(true)}
-        onMouseLeave={() => handleHover(false)}
-        sx={{ width: scale, height: scale}}
+          onClick={handleClick}
+          onMouseEnter={() => handleHover(true)}
+          onMouseLeave={() => handleHover(false)}
         >
+          <CardActionArea>
             {cardMedia}
+          </CardActionArea>
         </Card>
-    </Box>
-
+    </CenterContentBox>
   );
 };
